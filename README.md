@@ -40,5 +40,11 @@ Se qualquer fase exceder 15s, o Spring Boot irá forçar o encerramento para aqu
 Isso evita que o processo de shutdown como um todo demore muito por conta de alguma fase lentista ou bloqueada.
 
 É uma forma de customizar e acelerar o shutdown graceful da aplicação Spring Boot conforme necessidade.
+
+
+###########
+A propriedade hikari.maximum-pool-size define o tamanho máximo do pool de conexões com o banco de dados. O padrão é 10.
+A propriedade hikari.connection-timeout define o tempo máximo em milissegundos que o Hikari irá aguardar para estabelecer uma nova conexão com o banco antes de lançar erro. O padrão é 30000 (30 segundos).
+Já a propriedade hikari.idle-timeout define o tempo máximo em milissegundos que uma conexão pode ficar ociosa antes de ser fechada. O padrão é 600000 (10 minutos).
 ```
 
