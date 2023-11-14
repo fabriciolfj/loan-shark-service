@@ -1,4 +1,4 @@
-package com.gifthub.loanshark.entities;
+package com.gifthub.loanshark.entities.risk;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

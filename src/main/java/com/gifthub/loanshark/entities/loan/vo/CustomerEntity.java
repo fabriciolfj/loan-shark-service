@@ -1,4 +1,4 @@
-package com.gifthub.loanshark.entities;
+package com.gifthub.loanshark.entities.loan.vo;
 
 import java.time.LocalDate;
 
