@@ -21,6 +21,9 @@ spring:
       maximum-pool-size: 15
       connection-timeout: 2000
       idle-timeout: 1000
+  flyway:
+    locations:
+      - db/migrationsr
   jpa:
     generate-ddl: false
     hibernate:
@@ -34,6 +37,8 @@ spring:
       - localhost:29093
       - localhost:29094
     consumer:
+      enable-auto-commit: false
+      auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
