@@ -11,7 +11,17 @@
 
 ## Arquitetura
  - praticas clean code
+   - multiplos dominios
+   - comunicação entro os dominios e via eventos ou um orquestrador (que chama os 2 contextos ou usecases)
  - arquitetura clean
+ - arquitetura em componentes (não utilizada nesse projeto)
+```
+Arquitetura baseada em componentes, pode ser resumido em quatro regras simples:
+- Um componente tem um namespace dedicado para ser endereçável.
+- Um componente possui uma API dedicada e componentes internos.
+- A API de um componente pode ser chamada externamente, mas seus componentes internos não.
+- Um componente pode conter subcomponentes como parte de seus componentes internos.
+```
   
 ## Explicação de algumas propriedades:
 ```

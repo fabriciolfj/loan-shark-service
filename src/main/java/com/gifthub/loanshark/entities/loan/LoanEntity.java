@@ -1,9 +1,6 @@
 package com.gifthub.loanshark.entities.loan;
 
 
-import com.gifthub.loanshark.entities.loan.vo.CustomerEntity;
-import com.gifthub.loanshark.entities.loan.vo.DetailsLoanEntity;
-import com.gifthub.loanshark.entities.loan.vo.StatusLoanEntity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
