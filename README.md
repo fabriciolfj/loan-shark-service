@@ -26,6 +26,7 @@
    - cada pacote possui uma api que expões suas funcionalidades
    - o mundo externo desconheci os detalhes de cada pacote
    - temos o pacote pai com sua api, e subpacotes com os detalhes, que implementa a interface(api) pai
+   - dentro do pacote filho eles podem se comunicar, mas ninguem fora do pacote pai ou seja, subpacote de outro pacote pai, podem acessá-los
 ```
 Arquitetura baseada em componentes, pode ser resumido em quatro regras simples:
 - Um componente tem um namespace dedicado para ser endereçável.

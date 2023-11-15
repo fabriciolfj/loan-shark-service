@@ -4,5 +4,5 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
 
-public record RiskEntity(String loan, int score, Optional<BigDecimal> committedValue, Optional<LocalDate> dateLastLoan) {
+public record Risk(String loan, int score, Optional<BigDecimal> committedValue, Optional<LocalDate> dateLastLoan) {
 }

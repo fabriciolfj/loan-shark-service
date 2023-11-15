@@ -1,6 +1,6 @@
 package com.gifthub.loanshark.entities.loan;
 
-enum StatusLoanEntity {
+enum StatusLoanVO {
 
     APPROVED,
     DISAPPROVED,
