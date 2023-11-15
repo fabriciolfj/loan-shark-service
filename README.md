@@ -1,6 +1,14 @@
 # loan-shark-service
 ## Tecnologidas utilizadas:
  - spring 3
+   - aop
+   - spring data
+   - web
+   - flyway
+   - circuit breaker
+   - jacoco
+   - checkstyle
+   - test containers
  - java 17
  - resilience4j
  - argocd
