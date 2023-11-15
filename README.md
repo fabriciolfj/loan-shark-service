@@ -22,7 +22,10 @@
    - multiplos dominios
    - comunicação entro os dominios e via eventos ou um orquestrador (que chama os 2 contextos ou usecases)
  - arquitetura clean
- - arquitetura em componentes (não utilizada nesse projeto)
+ - arquitetura em componentes
+   - cada pacote possui uma api que expões suas funcionalidades
+   - o mundo externo desconheci os detalhes de cada pacote
+   - temos o pacote pai com sua api, e subpacotes com os detalhes, que implementa a interface(api) pai
 ```
 Arquitetura baseada em componentes, pode ser resumido em quatro regras simples:
 - Um componente tem um namespace dedicado para ser endereçável.
