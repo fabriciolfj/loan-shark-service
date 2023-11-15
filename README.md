@@ -8,7 +8,7 @@
    - circuit breaker
    - jacoco
    - checkstyle
-   - test containers
+   - test containers (https://testcontainers.com/guides/testing-spring-boot-rest-api-using-testcontainers/)
  - java 17
  - resilience4j
  - argocd
