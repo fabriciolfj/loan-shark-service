@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/loan/v1")
+@RequestMapping("/v1/loans")
 public class LoanController {
 
 
