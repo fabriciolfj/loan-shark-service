@@ -16,6 +16,7 @@
  - istio
  - gifthub actions
  - redis
+ - openapi (/openapi/swagger-ui.html)
 
 ## Arquitetura
  - praticas clean code

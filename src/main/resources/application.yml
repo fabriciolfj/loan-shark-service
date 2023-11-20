@@ -8,12 +8,17 @@ server:
       max: 200
       min-spare: 5
 
+
+springdoc:
+  swagger-ui.path: /openapi/swagger-ui.html
+  api-docs.path: /openapi/v3/api-docs
+
 spring:
   application:
     name: loan-shark
   data:
     redis:
-      url: localhost:6379
+      url: rediss://localhost:6379
   lifecycle:
     timeout-per-shutdown-phase: 15s
   datasource:
@@ -26,7 +31,7 @@ spring:
       idle-timeout: 1000
   flyway:
     locations:
-      - db/migrationsr
+      - db/migration
   jpa:
     generate-ddl: false
     hibernate:
@@ -72,3 +77,17 @@ management:
 
 logging:
   pattern.console: "%clr(%d{HH:mm:ss.SSS}){blue} %clr(---){faint} %clr([%15.15t]){yellow} %clr(:){red} %clr(%m){faint}%n"
+
+api:
+  common:
+    version: 1.0.0
+    title: Loan Shark API
+    description: Create loan suggestions
+    contact:
+      email: fabricio.jacob@outlook.com
+  loan-controller:
+    description: Create suggestion loan
+    summary: Create loan
+  response-codes:
+    badRequest: Input data invalids
+    creation: Request creation suggestion loan success
