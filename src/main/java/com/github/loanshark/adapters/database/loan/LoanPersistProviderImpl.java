@@ -1,7 +1,6 @@
-package com.github.loanshark.adapters.database;
+package com.github.loanshark.adapters.database.loan;
 
 import com.github.loanshark.adapters.database.customer.CustomerDatabase;
-import com.github.loanshark.adapters.database.loan.LoanRepository;
 import com.github.loanshark.entities.loan.Loan;
 import com.github.loanshark.usecases.loan.SaveLoanProvider;
 import com.github.loanshark.util.EventLogUtil;
