@@ -1,4 +1,4 @@
-package com.github.loanshark.adapters.database.loan.data;
+package com.github.loanshark.adapters.database.data;
 
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
@@ -7,22 +7,21 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "suggestion")
+@Table(name = "risk")
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class SuggestionData {
+public class RiskData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private BigDecimal fees;
-    private int installments;
-    private BigDecimal endValue;
-    @ManyToOne
-    @JoinColumn(name = "loan_id")
-    private LoanData loan;
+    private String loan;
+    @Column(name = "committed_value")
+    private BigDecimal committedValue;
+    private LocalDateTime lastDate;
 }

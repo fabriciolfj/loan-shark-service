@@ -1,4 +1,4 @@
-package com.github.loanshark.adapters.database.loan.data;
+package com.github.loanshark.adapters.database.data;
 
 import jakarta.persistence.*;
 import lombok.*;

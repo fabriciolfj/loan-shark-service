@@ -1,13 +1,11 @@
-package com.github.loanshark.adapters.database.loan.impl;
+package com.github.loanshark.adapters.database.customer;
 
-import com.github.loanshark.adapters.database.loan.CustomerDatabase;
-import com.github.loanshark.adapters.database.loan.data.CustomerData;
-import com.github.loanshark.adapters.database.loan.repositories.CustomerRepository;
+import com.github.loanshark.adapters.database.data.CustomerData;
 import com.github.loanshark.entities.loan.Loan;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import static com.github.loanshark.adapters.database.loan.impl.CustomerDataMapper.toData;
+import static com.github.loanshark.adapters.database.customer.CustomerDataMapper.toData;
 
 @Component
 @RequiredArgsConstructor

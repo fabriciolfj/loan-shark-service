@@ -1,6 +1,6 @@
-package com.github.loanshark.adapters.database.loan;
+package com.github.loanshark.adapters.database.customer;
 
-import com.github.loanshark.adapters.database.loan.data.CustomerData;
+import com.github.loanshark.adapters.database.data.CustomerData;
 import com.github.loanshark.entities.loan.Loan;
 
 public interface CustomerDatabase {

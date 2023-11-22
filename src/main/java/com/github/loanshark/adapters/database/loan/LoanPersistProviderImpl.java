@@ -1,6 +1,6 @@
 package com.github.loanshark.adapters.database.loan;
 
-import com.github.loanshark.adapters.database.loan.repositories.LoanRepository;
+import com.github.loanshark.adapters.database.customer.CustomerDatabase;
 import com.github.loanshark.entities.loan.Loan;
 import com.github.loanshark.usecases.loan.SaveLoanProvider;
 import lombok.RequiredArgsConstructor;

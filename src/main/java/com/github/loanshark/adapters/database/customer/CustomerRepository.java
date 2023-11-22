@@ -1,6 +1,6 @@
-package com.github.loanshark.adapters.database.loan.repositories;
+package com.github.loanshark.adapters.database.customer;
 
-import com.github.loanshark.adapters.database.loan.data.CustomerData;
+import com.github.loanshark.adapters.database.data.CustomerData;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
