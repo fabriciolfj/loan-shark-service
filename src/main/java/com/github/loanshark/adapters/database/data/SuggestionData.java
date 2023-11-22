@@ -1,10 +1,7 @@
 package com.github.loanshark.adapters.database.data;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -14,6 +11,8 @@ import java.math.BigDecimal;
 @Setter
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class SuggestionData {
 
     @Id

@@ -91,3 +91,6 @@ api:
   response-codes:
     badRequest: Input data invalids
     creation: Request creation suggestion loan success
+
+loan:
+  initprocess: loan-init

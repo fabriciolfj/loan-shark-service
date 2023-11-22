@@ -1,5 +1,7 @@
-package com.github.loanshark.adapters.database.customer;
+package com.github.loanshark.adapters.database.customer.impl;
 
+import com.github.loanshark.adapters.database.customer.CustomerDatabase;
+import com.github.loanshark.adapters.database.customer.CustomerRepository;
 import com.github.loanshark.adapters.database.data.CustomerData;
 import com.github.loanshark.entities.loan.Loan;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +16,7 @@ public class CustomerDatabaseImpl implements CustomerDatabase {
     private final CustomerRepository customerRepository;
 
     @Override
-    public CustomerData findOrCreateCustomer(final Loan loan) {
+    public CustomerData findOrCreate(final Loan loan) {
         var customer = customerRepository.findByDocument(loan.getDocumentCustomer());
 
         return customer.orElseGet(() -> customerRepository.save(toData(loan)));

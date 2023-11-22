@@ -1,6 +1,7 @@
 package com.github.loanshark.entrypoints.controller.loan;
 
 import com.github.loanshark.entrypoints.controller.loan.dto.LoanRequest;
+import com.github.loanshark.usecases.loan.ApplyLoanUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -18,6 +19,8 @@ import static com.github.loanshark.entrypoints.controller.loan.LoanDTOMapper.toE
 @RequestMapping("/v1/loans")
 public class LoanController {
 
+    private final ApplyLoanUseCase applyLoanUseCase;
+
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -30,5 +33,7 @@ public class LoanController {
     })
     public void requestLoan(@RequestBody @Valid final LoanRequest loanRequest) {
         var loan = toEntity(loanRequest);
+
+        applyLoanUseCase.execute(loan);
     }
 }

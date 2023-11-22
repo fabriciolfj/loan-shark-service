@@ -3,28 +3,37 @@ package com.github.loanshark.usecases.loan.impl;
 import com.github.loanshark.annotations.UseCase;
 import com.github.loanshark.entities.loan.Loan;
 import com.github.loanshark.usecases.loan.ApplyLoanUseCase;
-import com.github.loanshark.usecases.loan.ProcessLoanProvider;
+import com.github.loanshark.usecases.loan.SendProcessLoanProvider;
 import com.github.loanshark.usecases.loan.SaveLoanProvider;
+import com.github.loanshark.util.EventLogUtil;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@Slf4j
+
 @UseCase
 @RequiredArgsConstructor
 public class ApplyLoanUseCaseImpl implements ApplyLoanUseCase {
 
-    private final ProcessLoanProvider providerProcess;
+    private static final EventLogUtil log = EventLogUtil.defaults(ApplyLoanUseCaseImpl.class);
+
+    private final SendProcessLoanProvider providerProcess;
     private final SaveLoanProvider saveLoanProvider;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(transactionManager = "kafkaTransactionManager", propagation = Propagation.REQUIRED)
     public void execute(final Loan loan) {
-        log.info("process {}, param {}", "loan", loan.getCode());
+        log.event().m("execute")
+                .param("loan", loan.getCode())
+                .action("before init process")
+                .info();
+
         saveLoanProvider.process(loan);
         providerProcess.process(loan);
 
-        log.info("finished process loan {}", loan.getCode());
+        log.event().m("execute")
+                .param("loan", loan.getCode())
+                .action("end process")
+                .info();
     }
 }

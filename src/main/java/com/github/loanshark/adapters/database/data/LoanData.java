@@ -13,6 +13,8 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class LoanData {
 
     @Id
