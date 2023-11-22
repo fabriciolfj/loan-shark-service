@@ -16,7 +16,7 @@ import java.util.Arrays;
 @Order(1)
 public class LoggingControllerAspect {
 
-    @Pointcut("execution(* com.github.loanshark.entrypoints.controller.LoanController.*(..))")
+    @Pointcut("execution(* com.github.loanshark.entrypoints.controller.loan.LoanController.*(..))")
     public void logController() { }
 
     @Before("logController()")

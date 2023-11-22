@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.ToString;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -40,6 +42,18 @@ public class Loan {
 
     public BigDecimal getSalary() {
         return customer.salary();
+    }
+
+    public LocalDate getBirthdayCustomer() {
+        return this.customer.birthday();
+    }
+
+    public String getDocumentCustomer() {
+        return this.customer.document();
+    }
+
+    public LocalDateTime getRequestDate() {
+        return this.details.requestDate();
     }
 
 }

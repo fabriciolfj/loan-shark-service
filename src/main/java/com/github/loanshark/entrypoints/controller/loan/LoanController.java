@@ -1,6 +1,6 @@
-package com.github.loanshark.entrypoints.controller;
+package com.github.loanshark.entrypoints.controller.loan;
 
-import com.github.loanshark.entrypoints.controller.dto.LoanRequest;
+import com.github.loanshark.entrypoints.controller.loan.dto.LoanRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import static com.github.loanshark.entrypoints.controller.loan.LoanDTOMapper.toEntity;
 
 @Slf4j
 @RestController
@@ -27,6 +29,6 @@ public class LoanController {
             @ApiResponse(responseCode = "201", description = "${api.response-codes.creation}")
     })
     public void requestLoan(@RequestBody @Valid final LoanRequest loanRequest) {
-
+        var loan = toEntity(loanRequest);
     }
 }

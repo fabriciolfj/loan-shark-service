@@ -2,7 +2,7 @@ package com.github.loanshark.usecases.loan;
 
 import com.github.loanshark.entities.loan.Loan;
 
-public interface ApplyLoanUseCase {
+public interface ProcessLoanProvider {
 
-    void execute(final Loan loan);
+    void process(final Loan loan);
 }

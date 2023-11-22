@@ -1,19 +1,20 @@
+create table customer (
+    id              bigserial       primary key not null,
+    document        varchar(255)    not null,
+    salary          numeric(15,4)   not null,
+    birthday        date            not null,
+    constraint document_uk unique (document)
+);
+
 create table loan (
     id              bigserial       primary key not null,
     code            varchar(255)    not null,
     request_date    timestamp       not null,
     status          varchar(30)     not null,
     end_value       numeric(15,4)   not null,
-    constraint code_uk unique (code)
-);
-
-create table customer (
-    id              bigserial       primary key not null,
-    document        varchar(255)    not null,
-    salary          numeric(15,4)   not null,
-    birthday        timestamp       not null,
-    loan_id         bigserial       not null,
-    constraint customer_loan_fk foreign key (loan_id) references loan (id)
+    customer_id     bigserial       not null,
+    constraint code_uk unique (code),
+    constraint customer_fk foreign key (customer_id) references customer (id)
 );
 
 create table suggestion (

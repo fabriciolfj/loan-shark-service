@@ -4,13 +4,11 @@ import com.github.loanshark.annotations.ValidateFormatDate;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class ValidateFormatDateImpl implements ConstraintValidator<ValidateFormatDate, String> {
+import static com.github.loanshark.util.StringToLocalDateUtil.toLocalDate;
 
-    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+public class ValidateFormatDateImpl implements ConstraintValidator<ValidateFormatDate, String> {
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
@@ -19,7 +17,7 @@ public class ValidateFormatDateImpl implements ConstraintValidator<ValidateForma
         }
 
         try {
-            LocalDate.parse(value, DATE_FORMAT);
+            toLocalDate(value);
             return true;
         } catch (Exception e) {
             return false;

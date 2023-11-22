@@ -1,4 +1,4 @@
-package com.github.loanshark.entrypoints.controller.dto;
+package com.github.loanshark.entrypoints.controller.loan.dto;
 
 import com.github.loanshark.annotations.ValidateFormatDate;
 import jakarta.validation.constraints.NotEmpty;
@@ -11,5 +11,6 @@ public record LoanRequest(
         @NotEmpty(message = "{loanRequest.document}") String document,
         @ValidateFormatDate(message = "{loanRequest.birthdayInvalid}")
         @NotEmpty(message = "{loanRequest.birthday}") String birthday,
+        @Positive(message = "{loanRequest.salary}") BigDecimal salary,
         @Positive(message = "{loanRequest.loan}") BigDecimal loan) {
 }

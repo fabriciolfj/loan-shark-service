@@ -1,6 +1,6 @@
 package com.github.loanshark.entities.loan;
 
-enum StatusLoanVO {
+public enum StatusLoanVO {
 
     APPROVED,
     DISAPPROVED,
