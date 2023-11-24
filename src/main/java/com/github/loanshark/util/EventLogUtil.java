@@ -297,6 +297,10 @@ public class EventLogUtil {
             info((Throwable) null, null);
         }
 
+        public void error() {
+            error((Throwable) null, null);
+        }
+
         public void trace() {
             trace((Throwable) null, null);
         }

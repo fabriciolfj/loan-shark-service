@@ -28,10 +28,10 @@ public class LoanPersistProviderImpl implements SaveLoanProvider {
                     .param("loan", loan.getCode())
                     .info();
         } catch (Exception e) {
-            log.event().m("process").action("save success")
+            log.event().m("process").action("save error")
                     .param("loan", loan.getCode())
                     .param("fail", e.getMessage())
-                    .info();
+                    .error();
 
             throw new RuntimeException(e.getMessage());
         }
