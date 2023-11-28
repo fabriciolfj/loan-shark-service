@@ -11,7 +11,7 @@
    - test containers (https://testcontainers.com/guides/testing-spring-boot-rest-api-using-testcontainers/)
  - java 17
  - resilience4j
- - argocd
+ - argocd 
  - elk
  - istio
  - gifthub actions
