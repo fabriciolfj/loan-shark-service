@@ -1,6 +1,7 @@
 package com.github.loanshark.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.loanshark.exceptionhandling.exceptions.ConvertJsonException;
 
 public class ConvertJsonUtil {
 
@@ -13,7 +14,7 @@ public class ConvertJsonUtil {
             var mapper = getMapper();
             return mapper.writeValueAsString(object);
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new ConvertJsonException(e.getMessage());
         }
     }
 

@@ -71,3 +71,6 @@ A propriedade hikari.connection-timeout define o tempo máximo em milissegundos 
 Já a propriedade hikari.idle-timeout define o tempo máximo em milissegundos que uma conexão pode ficar ociosa antes de ser fechada. O padrão é 600000 (10 minutos).
 ```
 
+## Ack manual
+- neste projeto confirmamos o recebimento das mensagens manualemente, para isso temos que prover um ConcurrentKafkaListenerContainer
+- setando ack para manual, carregando o consumidor (junto com as propriedades do application.yml)
