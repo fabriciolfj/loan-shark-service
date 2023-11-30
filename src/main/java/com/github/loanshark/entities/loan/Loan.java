@@ -1,6 +1,7 @@
 package com.github.loanshark.entities.loan;
 
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+@Builder
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Loan {
@@ -54,6 +56,14 @@ public class Loan {
 
     public LocalDateTime getRequestDate() {
         return this.details.requestDate();
+    }
+
+    public String getName() {
+        return this.customer.name();
+    }
+
+    public BigDecimal getValue() {
+        return this.details.value();
     }
 
 }

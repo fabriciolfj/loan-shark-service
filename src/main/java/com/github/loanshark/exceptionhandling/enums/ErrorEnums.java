@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 public enum ErrorEnums {
 
     SAVE_LOAN_ERROR,
+    LOAN_NOT_FOUND,
     SALARY_INVALID;
 
     public String getMessage() {

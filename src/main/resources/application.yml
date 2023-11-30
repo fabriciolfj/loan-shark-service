@@ -94,3 +94,8 @@ api:
 
 loan:
   initprocess: loan-init
+
+riskScore:
+  age: 20
+  salary: 30
+  dateRecall: 20

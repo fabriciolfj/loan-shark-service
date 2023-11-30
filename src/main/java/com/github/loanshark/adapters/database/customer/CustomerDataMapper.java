@@ -15,6 +15,7 @@ public class CustomerDataMapper {
                 .birthday(loan.getBirthdayCustomer())
                 .document(loan.getDocumentCustomer())
                 .salary(loan.getSalary())
+                .name(loan.getName())
                 .build();
     }
 }
