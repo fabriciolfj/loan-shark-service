@@ -1,8 +1,7 @@
 package com.github.loanshark.entrypoints.listeners;
 
 import com.github.loanshark.annotations.Provider;
-import com.github.loanshark.entities.risk.Risk;
-import com.github.loanshark.usecases.risk.StartAnalyzeRiskUseCase;
+import com.github.loanshark.usecases.risk.RiskAnalysisCoordinatorUseCase;
 import com.github.loanshark.util.ConvertJsonUtil;
 import com.github.loanshark.util.EventLogUtil;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,7 @@ public class LoanListener {
 
     private final EventLogUtil log = EventLogUtil.defaults(LoanListener.class);
 
-    private final StartAnalyzeRiskUseCase startAnalyzeRiskUseCase;
+    private final RiskAnalysisCoordinatorUseCase riskAnalysisCoordinatorUseCase;
 
     @KafkaListener(topics = "${loan.initprocess}", groupId = "${spring.application.name}")
     public void receive(final ConsumerRecord<String, String> message, final Acknowledgment ack) {
@@ -36,7 +35,7 @@ public class LoanListener {
             final var dto = new ConvertJsonUtil<LoanIdDTO>().toObject(payload, LoanIdDTO.class);
             final var risk = RiskMapper.toRisk(dto);
 
-            startAnalyzeRiskUseCase.execute(risk);
+            riskAnalysisCoordinatorUseCase.execute(risk);
             log.event().m("receive")
                     .param("message", "process success risk to loan " + payload)
                     .info();

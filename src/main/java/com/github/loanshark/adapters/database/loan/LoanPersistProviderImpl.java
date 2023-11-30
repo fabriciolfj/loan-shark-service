@@ -45,7 +45,7 @@ public class LoanPersistProviderImpl implements SaveLoanProvider, FetchLoanDataP
     @Override
     @Transactional
     public Loan process(final Risk risk) {
-        final var data = loanRepository.findByCode(risk.getCodeLoan());
+        final var data = loanRepository.findLoan(risk.getCodeLoan());
 
         if (data.isEmpty()) {
             log.event()

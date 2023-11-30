@@ -3,8 +3,9 @@ package com.github.loanshark.usecases.risk.impl;
 import com.github.loanshark.annotations.UseCase;
 import com.github.loanshark.entities.risk.Risk;
 import com.github.loanshark.usecases.risk.ApplyRiskResultUseCase;
+import com.github.loanshark.usecases.risk.EnrichRiskUseCase;
 import com.github.loanshark.usecases.risk.ProcessAnalyseRiskUseCase;
-import com.github.loanshark.usecases.risk.StartAnalyzeRiskUseCase;
+import com.github.loanshark.usecases.risk.RiskAnalysisCoordinatorUseCase;
 import com.github.loanshark.usecases.risk.providers.FetchLoanDataProvider;
 import com.github.loanshark.util.EventLogUtil;
 import lombok.RequiredArgsConstructor;
@@ -14,19 +15,17 @@ import static com.github.loanshark.usecases.risk.impl.EnrichRiskWithLoanMapper.t
 
 @UseCase
 @RequiredArgsConstructor
-public class StartRiskUseCaseImpl implements StartAnalyzeRiskUseCase {
+public class RiskAnalysisCoordinatorUseCaseImpl implements RiskAnalysisCoordinatorUseCase {
 
-    private static final EventLogUtil log = EventLogUtil.defaults(StartAnalyzeRiskUseCase.class);
+    private static final EventLogUtil log = EventLogUtil.defaults(RiskAnalysisCoordinatorUseCase.class);
 
-    private final FetchLoanDataProvider provider;
+    private final EnrichRiskUseCase enrichRiskUseCase;
     private final List<ProcessAnalyseRiskUseCase> processes;
     private final ApplyRiskResultUseCase applyRiskResultUseCase;
 
     @Override
     public void execute(final Risk risk) {
-        final var loan = provider.process(risk);
-        final var riskEnrich = toRisk(loan, risk);
-
+        final var riskEnrich = enrichRiskUseCase.execute(risk);
         final var result = processes.stream().map(c -> c.execute(riskEnrich))
                 .findAny();
 
