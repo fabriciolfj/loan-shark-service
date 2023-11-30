@@ -1,4 +1,4 @@
-package com.github.loanshark.usecases.risk.configuration;
+package com.github.loanshark.configuration;
 
 
 import lombok.Getter;
