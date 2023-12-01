@@ -1,4 +1,4 @@
-package com.github.loanshark.usecases.risk.impl;
+package com.github.loanshark.usecases.risk.mapper;
 
 import com.github.loanshark.entities.loan.Loan;
 import com.github.loanshark.entities.risk.CustomerVO;

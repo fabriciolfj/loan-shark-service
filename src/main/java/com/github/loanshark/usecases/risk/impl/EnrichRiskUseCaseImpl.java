@@ -7,7 +7,7 @@ import com.github.loanshark.usecases.risk.providers.FetchLoanDataProvider;
 import com.github.loanshark.util.EventLogUtil;
 import lombok.RequiredArgsConstructor;
 
-import static com.github.loanshark.usecases.risk.impl.EnrichRiskWithLoanMapper.toRisk;
+import static com.github.loanshark.usecases.risk.mapper.EnrichRiskWithLoanMapper.toRisk;
 
 @UseCase
 @RequiredArgsConstructor
