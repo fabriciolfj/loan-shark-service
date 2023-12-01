@@ -35,6 +35,10 @@ Arquitetura baseada em componentes, pode ser resumido em quatro regras simples:
 - A API de um componente pode ser chamada externamente, mas seus componentes internos não.
 - Um componente pode conter subcomponentes como parte de seus componentes internos.
 ```
+
+## Java
+- uso do java21 
+- uso do zgc generational (-XX:+UseZGC -XX:+ZGenerational)
   
 ## Explicação de algumas propriedades:
 ```

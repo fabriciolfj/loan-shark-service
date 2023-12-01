@@ -59,6 +59,13 @@ spring:
   output.ansi.enabled: ALWAYS
 
 management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
   endpoints:
     web:
       exposure:
@@ -94,3 +101,8 @@ api:
 
 loan:
   initprocess: loan-init
+
+riskScore:
+  age: 20
+  salary: 30
+  dateRecall: 20
