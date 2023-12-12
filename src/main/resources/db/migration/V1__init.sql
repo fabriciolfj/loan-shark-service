@@ -32,5 +32,6 @@ create table risk(
    id               bigserial        primary key not null,
    loan             varchar(255)    not null,
    committed_value  numeric(15,4),
-   last_date        timestamp
+   last_date        timestamp,
+   status           varchar(15) not null
 );

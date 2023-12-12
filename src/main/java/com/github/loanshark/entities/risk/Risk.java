@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.Period;
@@ -21,7 +20,8 @@ public class Risk {
     private LoanVO loan;
     private CustomerVO customer;
     private BigDecimal committedValue;
-    private LastLoanVO lastLoanVO;
+    private LastLoanVO lastLoan;
+    private StatusRiskVO statusRisk;
     private int score;
 
     public void setCustomer(final CustomerVO vo) {
@@ -50,27 +50,41 @@ public class Risk {
     }
 
     public Risk setLastLoan(final LastLoanVO vo) {
-        this.lastLoanVO = vo;
+        this.lastLoan = vo;
         return this;
     }
 
     public BigDecimal calculeSalaryCommitted() {
-        if (Objects.isNull(this.lastLoanVO)) {
+        if (Objects.isNull(this.lastLoan)) {
             return BigDecimal.ZERO;
         }
 
         var salary = this.customer.salaryCustomer();
-        var committed = this.lastLoanVO.value();
+        var committed = this.lastLoan.value();
 
-        return committed.divide(salary).multiply(VALUE_100).setScale(4, RoundingMode.FLOOR);
+        return committed.divide(salary, 4, RoundingMode.HALF_UP).multiply(VALUE_100);
     }
 
     public int getQtdDaysLastLoan() {
-        if(Objects.isNull(this.lastLoanVO)) {
+        if(Objects.isNull(this.lastLoan)) {
             return DAYS_DEFAULT;
         }
 
-        final var period = Period.between(this.lastLoanVO.lastRequest(), LocalDate.now());
+        final var period = Period.between(this.lastLoan.lastRequest(), LocalDate.now());
         return period.getDays();
+    }
+
+    public Risk approved() {
+        this.statusRisk = StatusRiskVO.APPROVED;
+        return this;
+    }
+
+    public Risk disapproved() {
+        this.statusRisk = StatusRiskVO.FAILED;
+        return this;
+    }
+
+    public String getStatusDescribe() {
+        return this.statusRisk.getDescribe();
     }
 }

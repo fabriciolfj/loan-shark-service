@@ -9,12 +9,12 @@ import static java.util.stream.Stream.of;
 @Getter
 public enum StatusLoanVO {
 
-    APPROVED,
-    DISAPPROVED,
-    PENDING,
-    CANCELED;
+    APPROVED("approved"),
+    DISAPPROVED("disapproved"),
+    PENDING("pending"),
+    CANCELED("canceled");
 
-    private String describe;
+    private final String describe;
 
     public static StatusLoanVO toEnum(final String value) {
         return of(StatusLoanVO.values())

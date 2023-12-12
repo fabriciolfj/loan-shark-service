@@ -24,7 +24,7 @@ public class RiskAnalysisCoordinatorUseCaseImpl implements RiskAnalysisCoordinat
     public void execute(final Risk risk) {
         final var riskEnrich = enrichRiskUseCase.execute(risk);
         final var result = processes.stream().map(c -> c.execute(riskEnrich))
-                .findAny();
+                        .toList().get(0);
 
         log.event()
                 .m("startRiskUseCase")
@@ -32,6 +32,6 @@ public class RiskAnalysisCoordinatorUseCaseImpl implements RiskAnalysisCoordinat
                 .param("risk", "analyse executed")
                 .info();
 
-        applyRiskResultUseCase.execute(result.get());
+        applyRiskResultUseCase.execute(result);
     }
 }

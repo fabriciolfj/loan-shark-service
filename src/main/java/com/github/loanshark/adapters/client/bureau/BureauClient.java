@@ -1,10 +1,11 @@
 package com.github.loanshark.adapters.client.bureau;
 
-import jakarta.websocket.server.PathParam;
-import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.service.annotation.GetExchange;
 
 public interface BureauClient {
 
-    @GetMapping("/customer/{document}")
-    CustomerBereauDTO findDetails(@PathParam("document") final String document);
+    @GetExchange("/customer/{document}")
+    CustomerBereauDTO findDetails(@PathVariable("document") final String document);
 }

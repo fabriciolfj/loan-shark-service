@@ -107,5 +107,9 @@ riskScore:
   salary: 30
   daysValid: 20
 
+score:
+  approved: 76
+  median: 50
+
 bureau:
   url: http://localhost:9001

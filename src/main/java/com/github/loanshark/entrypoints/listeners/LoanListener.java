@@ -44,6 +44,7 @@ public class LoanListener {
         } catch (Exception e) {
             log.event().m("receive")
                     .param("message", "fail process risk to loan " + payload)
+                    .param("error" , e.getMessage())
                     .error();
         }
     }
