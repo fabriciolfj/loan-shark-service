@@ -1,4 +1,4 @@
-package com.github.loanshark.entrypoints.listeners;
+package com.github.loanshark.entrypoints.listeners.initprocess;
 
 import com.github.loanshark.annotations.Provider;
 import com.github.loanshark.usecases.risk.RiskAnalysisCoordinatorUseCase;

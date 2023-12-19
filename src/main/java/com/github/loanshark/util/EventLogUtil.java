@@ -215,7 +215,6 @@ public class EventLogUtil {
                 case TRACE:
                 default:
                     debug(t, input, params);
-                    return;
             }
         }
 
@@ -239,7 +238,7 @@ public class EventLogUtil {
         public void info(Throwable t, Object input, Object... params) {
             String msg = getMsg(input);
 
-            log.info(formatMsg((t == null ? "" : t.toString()) + ": " + msg, params), t);
+            log.info(formatMsg((t == null ? "" : t.toString()) + msg, params), t);
         }
 
         public void trace(Throwable t, Object input, Object... params) {
@@ -320,7 +319,7 @@ public class EventLogUtil {
         private String formatMsg(String formattedMsg, Object... params) {
             StringBuilder output = new StringBuilder(String.format(formattedMsg, params));
             for (String key : this.specificParams.keySet()) {
-                output.append(", ").append(key).append(" ").append(this.specificParams.get(key));
+                output.append(" ").append(key).append(" ").append(this.specificParams.get(key));
             }
             return output.toString();
         }

@@ -60,9 +60,9 @@ public class Risk {
         }
 
         var salary = this.customer.salaryCustomer();
-        var committed = this.lastLoan.value();
+        committedValue = this.lastLoan.value();
 
-        return committed.divide(salary, 4, RoundingMode.HALF_UP).multiply(VALUE_100);
+        return committedValue.divide(salary, 4, RoundingMode.HALF_UP).multiply(VALUE_100);
     }
 
     public int getQtdDaysLastLoan() {
@@ -74,12 +74,20 @@ public class Risk {
         return period.getDays();
     }
 
-    public Risk approved() {
+    public Risk evaluate(final int value) {
+        if (value >= score) {
+            return approved();
+        }
+
+        return disapproved();
+    }
+
+    private Risk approved() {
         this.statusRisk = StatusRiskVO.APPROVED;
         return this;
     }
 
-    public Risk disapproved() {
+    private Risk disapproved() {
         this.statusRisk = StatusRiskVO.FAILED;
         return this;
     }

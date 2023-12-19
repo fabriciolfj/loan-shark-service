@@ -1,4 +1,4 @@
-package com.github.loanshark.entrypoints.listeners;
+package com.github.loanshark.entrypoints.listeners.initprocess;
 
 import com.github.loanshark.entities.risk.LoanVO;
 import com.github.loanshark.entities.risk.Risk;

@@ -101,6 +101,7 @@ api:
 
 loan:
   initprocess: loan-init
+  notify: loan-notify
 
 riskScore:
   age: 20
