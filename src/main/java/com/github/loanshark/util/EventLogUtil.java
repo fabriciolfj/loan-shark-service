@@ -50,19 +50,19 @@ public class EventLogUtil {
     }
 
     public boolean isLevelEnabled(Level logLevel) {
-        switch (logLevel) {
+        return switch (logLevel) {
             case DEBUG:
-                return log.isDebugEnabled();
+                yield log.isDebugEnabled();
             case INFO:
-                return log.isInfoEnabled();
+                yield log.isInfoEnabled();
             case WARN:
-                return log.isWarnEnabled();
+                yield log.isWarnEnabled();
             case ERROR:
-                return log.isErrorEnabled();
+                yield log.isErrorEnabled();
             case TRACE:
             default:
-                return log.isTraceEnabled();
-        }
+                yield log.isTraceEnabled();
+        };
     }
 
     public boolean isDebugEnabled() {
