@@ -28,7 +28,7 @@ public class ApplyRiskResultUseCaseImpl implements ApplyRiskResultUseCase {
         log.event().m("applyRiskResult").param("loan", risk.getLoan())
                 .param("status", result.getStatusDescribe()).info();
 
-        provider.process(risk);
-        notifyApplyRiskCompletedUseCase.execute(risk);
+        provider.process(result);
+        notifyApplyRiskCompletedUseCase.execute(result);
     }
 }
