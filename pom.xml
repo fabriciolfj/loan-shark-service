@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.github</groupId>
 	<artifactId>loan-shark</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Loan Shark Service</name>
 	<description>Project Loan Service</description>
 	<properties>
@@ -200,7 +200,13 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<builder>paketobuildpacks/builder-jammy-tiny:latest</builder>
+						<name>fabricio211/loan-shark:${project.version}</name>
+						<builder>bellsoft/buildpacks.builder:musl</builder>
+						<env>
+							<BP_JVM_VERSION>17</BP_JVM_VERSION>
+							<BP_JVM_JLINK_ENABLED>true</BP_JVM_JLINK_ENABLED>
+							<BP_JVM_JLINK_ARGS>--no-man-pages --no-header-files --strip-debug --compress=2 --add-modules java.base,java.logging,java.naming,java.desktop,jdk.unsupported</BP_JVM_JLINK_ARGS>
+						</env>
 					</image>
 					<excludes>
 						<exclude>
