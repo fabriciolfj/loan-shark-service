@@ -2,7 +2,7 @@ package com.github.loanshark.adapters.messages.sendloan;
 
 import com.github.loanshark.annotations.Provider;
 import com.github.loanshark.entities.loan.Loan;
-import com.github.loanshark.usecases.loan.SendProcessLoanProvider;
+import com.github.loanshark.usecases.loan.providers.SendProcessLoanProvider;
 import com.github.loanshark.util.ConvertJsonUtil;
 import com.github.loanshark.util.EventLogUtil;
 import lombok.RequiredArgsConstructor;

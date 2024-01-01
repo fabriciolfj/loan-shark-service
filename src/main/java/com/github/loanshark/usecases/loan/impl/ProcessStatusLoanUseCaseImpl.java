@@ -2,9 +2,9 @@ package com.github.loanshark.usecases.loan.impl;
 
 import com.github.loanshark.annotations.UseCase;
 import com.github.loanshark.entities.risk.Risk;
-import com.github.loanshark.usecases.loan.FindLoanProvider;
+import com.github.loanshark.usecases.loan.providers.FindLoanProvider;
 import com.github.loanshark.usecases.loan.ProcessStatusLoanUseCase;
-import com.github.loanshark.usecases.loan.SaveLoanProvider;
+import com.github.loanshark.usecases.loan.providers.SaveLoanProvider;
 import com.github.loanshark.util.EventLogUtil;
 import lombok.RequiredArgsConstructor;
 

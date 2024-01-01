@@ -1,4 +1,4 @@
-package com.github.loanshark.usecases.loan;
+package com.github.loanshark.usecases.loan.providers;
 
 import com.github.loanshark.entities.loan.Loan;
 
