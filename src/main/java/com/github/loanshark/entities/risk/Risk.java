@@ -24,6 +24,12 @@ public class Risk {
     private StatusRiskVO statusRisk;
     private int score;
 
+    public static boolean isApproved(final String status) {
+        final var enumStatus = StatusRiskVO.toStatus(status);
+
+        return enumStatus.getDescribe().equalsIgnoreCase(StatusRiskVO.APPROVED.getDescribe());
+    }
+
     public void setCustomer(final CustomerVO vo) {
         this.customer = vo;
     }
@@ -82,6 +88,10 @@ public class Risk {
         return disapproved();
     }
 
+    public String getStatusDescribe() {
+        return this.statusRisk.getDescribe();
+    }
+
     private Risk approved() {
         this.statusRisk = StatusRiskVO.APPROVED;
         return this;
@@ -90,9 +100,5 @@ public class Risk {
     private Risk disapproved() {
         this.statusRisk = StatusRiskVO.FAILED;
         return this;
-    }
-
-    public String getStatusDescribe() {
-        return this.statusRisk.getDescribe();
     }
 }

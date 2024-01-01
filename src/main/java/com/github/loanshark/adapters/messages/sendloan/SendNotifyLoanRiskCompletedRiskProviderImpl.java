@@ -2,6 +2,7 @@ package com.github.loanshark.adapters.messages.sendloan;
 
 import com.github.loanshark.annotations.Provider;
 import com.github.loanshark.usecases.risk.providers.NotifyRiskProvider;
+import com.github.loanshark.util.ConvertJsonUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -16,7 +17,9 @@ public class SendNotifyLoanRiskCompletedRiskProviderImpl implements NotifyRiskPr
     private String topic;
 
     @Override
-    public void process(final String loan) {
-        producer.send(topic, loan);
+    public void process(final String loan, final String status) {
+        var dto = LoanRiskApplyDTO.builder().loan(loan).status(status).build();
+
+        producer.send(topic, ConvertJsonUtil.toJson(dto));
     }
 }

@@ -21,7 +21,7 @@ public class Loan {
     private String code;
     private final CustomerVO customer;
     private final DetailsVO details;
-    private final StatusLoanVO status;
+    private StatusLoanVO status;
     private final List<SuggestionVO> suggestions;
 
     public Loan(final CustomerVO customer, final DetailsVO details) {
@@ -62,6 +62,16 @@ public class Loan {
 
     public BigDecimal getValue() {
         return this.details.value();
+    }
+
+    public Loan approved() {
+        this.status = StatusLoanVO.APPROVED;
+        return this;
+    }
+
+    public Loan disapproved() {
+        this.status = StatusLoanVO.DISAPPROVED;
+        return this;
     }
 
 }

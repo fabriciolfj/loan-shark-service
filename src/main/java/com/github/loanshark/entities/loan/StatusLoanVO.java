@@ -12,7 +12,8 @@ public enum StatusLoanVO {
     APPROVED("approved"),
     DISAPPROVED("disapproved"),
     PENDING("pending"),
-    CANCELED("canceled");
+    CANCELED("canceled"),
+    ACCEPTED("accepted");
 
     private final String describe;
 

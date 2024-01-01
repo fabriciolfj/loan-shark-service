@@ -14,7 +14,7 @@ enum StatusRiskVO {
 
     private final String describe;
 
-    public StatusRiskVO toStatus(final String describe) {
+    public static StatusRiskVO toStatus(final String describe) {
         return Stream.of(StatusRiskVO.values())
                 .filter(v -> v.getDescribe().equalsIgnoreCase(describe))
                 .findFirst()

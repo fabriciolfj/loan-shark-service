@@ -17,7 +17,7 @@ public class NotifyApplyRiskCompletedUseCaseImpl implements NotifyApplyRiskCompl
 
     @Override
     public void execute(final Risk risk) {
-        notifyRiskProvider.process(risk.getCodeLoan());
+        notifyRiskProvider.process(risk.getCodeLoan(), risk.getStatusDescribe());
 
         log.event()
                 .m("notifyApplyRiskCompleted")
