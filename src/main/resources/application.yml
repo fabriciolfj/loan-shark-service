@@ -18,7 +18,7 @@ spring:
     name: loan-shark
   data:
     redis:
-      url: rediss://localhost:6379
+      url: localhost:6379
   lifecycle:
     timeout-per-shutdown-phase: 15s
   datasource:
