@@ -78,5 +78,5 @@ spring.main.keep-alive=true faz com que o processo da JVM continue vivo após cr
 ```
 
 ## Ack manual
-- neste projeto confirmamos o recebimento das mensagens manualemente, para isso temos que prover um ConcurrentKafkaListenerContainer
+- neste projeto confirmamos o recebimento das mensagens manualmente, para isso temos que prover um ConcurrentKafkaListenerContainer
 - setando ack para manual, carregando o consumidor (junto com as propriedades do application.yml)
