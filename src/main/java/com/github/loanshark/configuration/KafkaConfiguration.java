@@ -5,6 +5,7 @@ import io.micrometer.common.KeyValues;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
+import org.springframework.boot.ssl.DefaultSslBundleRegistry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -26,7 +27,7 @@ public class KafkaConfiguration {
 
     @Bean
     public ConsumerFactory<String, Object> consumerFactory() {
-        var props = kafkaProperties.buildConsumerProperties();
+        var props = kafkaProperties.buildConsumerProperties(new DefaultSslBundleRegistry());
         props.remove(ConsumerConfig.CLIENT_ID_CONFIG);
 
         return new DefaultKafkaConsumerFactory<>(props);
