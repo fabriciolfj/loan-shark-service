@@ -35,6 +35,10 @@ Arquitetura baseada em componentes, pode ser resumido em quatro regras simples:
 - A API de um componente pode ser chamada externamente, mas seus componentes internos não.
 - Um componente pode conter subcomponentes como parte de seus componentes internos.
 ```
+
+## Java
+- uso do java21 
+- uso do zgc generational (-XX:+UseZGC -XX:+ZGenerational)
   
 ## Explicação de algumas propriedades:
 ```
@@ -69,8 +73,10 @@ Isso evita que o processo de shutdown como um todo demore muito por conta de alg
 A propriedade hikari.maximum-pool-size define o tamanho máximo do pool de conexões com o banco de dados. O padrão é 10.
 A propriedade hikari.connection-timeout define o tempo máximo em milissegundos que o Hikari irá aguardar para estabelecer uma nova conexão com o banco antes de lançar erro. O padrão é 30000 (30 segundos).
 Já a propriedade hikari.idle-timeout define o tempo máximo em milissegundos que uma conexão pode ficar ociosa antes de ser fechada. O padrão é 600000 (10 minutos).
+
+spring.main.keep-alive=true faz com que o processo da JVM continue vivo após criar o contexto Spring, ao invés de finalizar logo em seguida.
 ```
 
 ## Ack manual
-- neste projeto confirmamos o recebimento das mensagens manualemente, para isso temos que prover um ConcurrentKafkaListenerContainer
+- neste projeto confirmamos o recebimento das mensagens manualmente, para isso temos que prover um ConcurrentKafkaListenerContainer
 - setando ack para manual, carregando o consumidor (junto com as propriedades do application.yml)

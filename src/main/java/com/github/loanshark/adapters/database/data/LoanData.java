@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
@@ -23,11 +24,27 @@ public class LoanData {
     private Long id;
     private String code;
     private String status;
-    @Column(name = "end_value")
-    private BigDecimal endValue;
+    @Column(name = "value")
+    private BigDecimal value;
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private CustomerData customer;
     @Column(name = "request_date")
     private LocalDateTime requestDate;
+
+    public LocalDate getBirthday() {
+        return customer.getBirthday();
+    }
+
+    public BigDecimal getSalary() {
+        return customer.getSalary();
+    }
+
+    public String getNameCustomer() {
+        return this.customer.getName();
+    }
+
+    public String getDocument() {
+        return this.customer.getDocument();
+    }
 }

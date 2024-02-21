@@ -3,6 +3,7 @@ package com.github.loanshark.entrypoints.controller.loan;
 import com.github.loanshark.entities.loan.CustomerVO;
 import com.github.loanshark.entities.loan.DetailsVO;
 import com.github.loanshark.entities.loan.Loan;
+import com.github.loanshark.entities.loan.StatusLoanVO;
 import com.github.loanshark.entrypoints.controller.loan.dto.LoanRequest;
 
 import java.time.LocalDate;
@@ -21,7 +22,6 @@ public class LoanDTOMapper {
                 request.salary());
 
         var details = new DetailsVO(request.loan(), LocalDateTime.now());
-
         return new Loan(customer, details);
     }
 }

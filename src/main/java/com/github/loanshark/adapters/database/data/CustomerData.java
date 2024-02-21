@@ -27,4 +27,5 @@ public class CustomerData {
     private LocalDate birthday;
     @OneToMany(mappedBy = "customer")
     private List<LoanData> loans;
+    private String name;
 }

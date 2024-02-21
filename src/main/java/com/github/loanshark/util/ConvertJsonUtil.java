@@ -3,9 +3,9 @@ package com.github.loanshark.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.loanshark.exceptionhandling.exceptions.ConvertJsonException;
 
-public class ConvertJsonUtil {
+public class ConvertJsonUtil<T> {
 
-    private ConvertJsonUtil() { }
+    public ConvertJsonUtil() { }
 
     private static ObjectMapper mapper;
 
@@ -13,6 +13,15 @@ public class ConvertJsonUtil {
         try {
             var mapper = getMapper();
             return mapper.writeValueAsString(object);
+        } catch (Exception e) {
+            throw new ConvertJsonException(e.getMessage());
+        }
+    }
+
+    public T toObject(final String json, final Class<T> clazz) {
+        try {
+            var mapper = getMapper();
+            return mapper.readValue(json, clazz);
         } catch (Exception e) {
             throw new ConvertJsonException(e.getMessage());
         }

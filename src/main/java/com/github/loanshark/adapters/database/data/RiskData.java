@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class RiskData {
 
     @Id
@@ -23,4 +24,5 @@ public class RiskData {
     @Column(name = "committed_value")
     private BigDecimal committedValue;
     private LocalDateTime lastDate;
+    private String status;
 }

@@ -18,7 +18,7 @@ spring:
     name: loan-shark
   data:
     redis:
-      url: rediss://localhost:6379
+      url: redis://127.0.0.1:6379
   lifecycle:
     timeout-per-shutdown-phase: 15s
   datasource:
@@ -59,6 +59,13 @@ spring:
   output.ansi.enabled: ALWAYS
 
 management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
   endpoints:
     web:
       exposure:
@@ -99,3 +106,16 @@ api:
 
 loan:
   initprocess: loan-init
+  notify: loan-notify
+
+riskScore:
+  age: 20
+  salary: 30
+  daysValid: 20
+
+score:
+  approved: 76
+  median: 50
+
+bureau:
+  url: http://localhost:9001

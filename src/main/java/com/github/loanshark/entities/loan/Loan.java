@@ -1,9 +1,7 @@
 package com.github.loanshark.entities.loan;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,6 +11,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+@Builder
+@AllArgsConstructor
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Loan {
@@ -21,7 +21,7 @@ public class Loan {
     private String code;
     private final CustomerVO customer;
     private final DetailsVO details;
-    private final StatusLoanVO status;
+    private StatusLoanVO status;
     private final List<SuggestionVO> suggestions;
 
     public Loan(final CustomerVO customer, final DetailsVO details) {
@@ -54,6 +54,24 @@ public class Loan {
 
     public LocalDateTime getRequestDate() {
         return this.details.requestDate();
+    }
+
+    public String getName() {
+        return this.customer.name();
+    }
+
+    public BigDecimal getValue() {
+        return this.details.value();
+    }
+
+    public Loan approved() {
+        this.status = StatusLoanVO.APPROVED;
+        return this;
+    }
+
+    public Loan disapproved() {
+        this.status = StatusLoanVO.DISAPPROVED;
+        return this;
     }
 
 }

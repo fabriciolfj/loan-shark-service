@@ -2,6 +2,7 @@ package com.github.loanshark.exceptionhandling.advice;
 
 import com.github.loanshark.exceptionhandling.dto.ErrorDTO;
 import com.github.loanshark.exceptionhandling.dto.ErrorDetailsDTO;
+import com.github.loanshark.exceptionhandling.exceptions.LoanNotFoundException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
@@ -23,6 +24,15 @@ public class RestControllerAdvice {
     private final MessageSource messageSource;
 
     private static final String MESSAGE_VALIDATION = "validação dos campos da requisição";
+
+    @ExceptionHandler(LoanNotFoundException.class)
+    public ResponseEntity handleLoanNotFoundException(final LoanNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorDTO.builder()
+                        .code(HttpStatus.BAD_REQUEST.value())
+                        .message(e.getMessage())
+                        .build());
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity handleMethodArgumentNotValidException(final MethodArgumentNotValidException e) {
