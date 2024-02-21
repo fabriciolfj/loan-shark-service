@@ -71,7 +71,11 @@ management:
       show-details: always
       probes:
         enabled: true
+  tracing:
+    sampling:
+      probability: 1.0
   metrics:
+    enabled: true
     tags:
       application: ${spring.application.name}
 
@@ -91,6 +95,7 @@ api:
   response-codes:
     badRequest: Input data invalids
     creation: Request creation suggestion loan success
+
 
 loan:
   initprocess: loan-init

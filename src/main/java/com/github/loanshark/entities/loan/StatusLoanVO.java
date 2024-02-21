@@ -5,5 +5,5 @@ public enum StatusLoanVO {
     APPROVED,
     DISAPPROVED,
     PENDING,
-    CANCELED;
+    CANCELED
 }
