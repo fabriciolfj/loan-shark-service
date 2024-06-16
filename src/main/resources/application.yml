@@ -78,9 +78,6 @@ management:
       show-details: always
       probes:
         enabled: true
-  tracing:
-    sampling:
-      probability: 1.0
   metrics:
     enabled: true
     tags:
