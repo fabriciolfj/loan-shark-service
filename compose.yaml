@@ -1,4 +1,14 @@
 services:
+  mockserver:
+    image: mockserver/mockserver:latest
+    ports:
+      - "9001:1080"
+    environment:
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /mocks/*.json
+      MOCKSERVER_WATCH_INITIALIZATION_JSON: 'true'
+    volumes:
+      - ./mock:/mocks:ro
+
   postgres:
     image: 'postgres:14.0'
     environment:
