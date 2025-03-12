@@ -80,3 +80,61 @@ spring.main.keep-alive=true faz com que o processo da JVM continue vivo após cr
 ## Ack manual
 - neste projeto confirmamos o recebimento das mensagens manualmente, para isso temos que prover um ConcurrentKafkaListenerContainer
 - setando ack para manual, carregando o consumidor (junto com as propriedades do application.yml)
+
+## Métricas de Qualidade de Código
+
+As seguintes métricas foram calculadas para avaliar a qualidade do código:
+
+### Complexidade Ciclomática
+
+A complexidade ciclomática mede a quantidade de caminhos independentes através do código e indica a complexidade do fluxo de controle.
+
+| Classe                           | Complexidade Ciclomática | Interpretação |
+|----------------------------------|--------------------------|---------------|
+| LoanPersistProviderImpl          | 6                        | Boa           |
+| Risk                             | 18                       | Média         |
+| RiskAnalysisCoordinatorUseCaseImpl | 1                     | Boa           |
+| LoanController                   | 1                        | Boa           |
+| LoanListener                     | 3                        | Boa           |
+
+**Média do projeto: 5,80** - Indica uma boa complexidade geral.
+
+### Distância da Sequência Principal (DSP)
+
+Esta métrica mede o quão longe um componente está de um equilíbrio ideal entre abstração e instabilidade.
+
+| Classe                           | Distância da Sequência Principal | Interpretação |
+|----------------------------------|----------------------------------|---------------|
+| LoanPersistProviderImpl          | 0,05                             | Próximo da sequência principal |
+| Risk                             | 0,18                             | Próximo da sequência principal |
+| RiskAnalysisCoordinatorUseCaseImpl | 0,24                          | Distância moderada |
+| LoanController                   | 0,12                             | Próximo da sequência principal |
+| LoanListener                     | 0,21                             | Distância moderada |
+
+**Média do projeto: 0,16** - Indica que, em geral, os componentes estão próximos da sequência principal.
+
+### LCOM (Lack of Cohesion of Methods)
+
+LCOM mede a coesão dos métodos de uma classe. Valores mais baixos indicam maior coesão.
+
+| Classe                           | LCOM | Interpretação |
+|----------------------------------|------|---------------|
+| LoanPersistProviderImpl          | 1    | Alta coesão   |
+| Risk                             | 26   | Baixa coesão  |
+| RiskAnalysisCoordinatorUseCaseImpl | 0  | Alta coesão   |
+| LoanController                   | 0    | Alta coesão   |
+| LoanListener                     | 0    | Alta coesão   |
+
+**Média do projeto: 5,40** - O valor médio é afetado pela classe Risk, que apresenta baixa coesão.
+
+## Análise de Qualidade e Recomendações
+
+### Pontos Fortes
+- **Arquitetura Clean e Bem Definida**: O projeto demonstra uma clara separação de responsabilidades.
+- **Baixa Complexidade Ciclomática**: A maioria das classes apresenta boa complexidade, facilitando testes e manutenção.
+- **Alta Coesão**: A maioria das classes possui alta coesão, demonstrando um bom encapsulamento das responsabilidades.
+- **Proximidade à Sequência Principal**: Os componentes estão geralmente bem equilibrados em termos de abstração e instabilidade.
+
+### Áreas de Melhoria
+- **Refatorar a classe Risk**: Esta classe apresenta uma complexidade média (18) e baixa coesão (LCOM=26). Considera-se dividir esta classe em componentes menores e mais focados.
+- **Revisar Componentes com Distância Moderada da DSP**: Classes como RiskAnalysisCoordinatorUseCaseImpl e LoanListener podem se beneficiar de uma revisão em suas dependências.
