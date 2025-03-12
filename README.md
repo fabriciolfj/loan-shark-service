@@ -138,3 +138,109 @@ LCOM mede a coesão dos métodos de uma classe. Valores mais baixos indicam maio
 ### Áreas de Melhoria
 - **Refatorar a classe Risk**: Esta classe apresenta uma complexidade média (18) e baixa coesão (LCOM=26). Considera-se dividir esta classe em componentes menores e mais focados.
 - **Revisar Componentes com Distância Moderada da DSP**: Classes como RiskAnalysisCoordinatorUseCaseImpl e LoanListener podem se beneficiar de uma revisão em suas dependências.
+
+## Connascência no Projeto
+
+### O que é Connascência?
+
+Connascência (Connascence) é um conceito em engenharia de software que mede a interdependência entre partes de um programa. O termo foi introduzido por Meilir Page-Jones e é uma forma de avaliar o acoplamento entre componentes de software.
+
+Connascência existe quando duas entidades de software são tão interdependentes que uma mudança em uma delas necessitaria de uma mudança correspondente na outra para manter a correção do sistema. Quanto maior a connascência, mais forte é o acoplamento.
+
+### Tipos de Connascência Encontrados no Projeto
+
+#### 1. Connascência de Nome (CoN)
+
+**Exemplos no projeto:**
+- A classe `LoanPersistProviderImpl` deve implementar as interfaces com métodos nomeados corretamente (por exemplo, `process`).
+- O projeto faz uso extensivo de injeção de dependência onde nomes de beans devem corresponder.
+
+**Grau:** Alto, praticamente todas as classes apresentam este tipo.  
+**Localidade:** Boa, geralmente entre componentes relacionados.
+
+#### 2. Connascência de Tipo (CoT)
+
+**Exemplos no projeto:**
+- `Risk` e outras entidades do domínio que são passadas entre camadas.
+- DTOs e entidades de domínio que precisam ser convertidos.
+
+**Grau:** Médio, presente principalmente nas camadas de adaptadores.  
+**Localidade:** Moderada, ocorre entre camadas diferentes.
+
+#### 3. Connascência de Significado (CoM)
+
+**Exemplos no projeto:**
+- Enums como `StatusLoanVO` ou `StatusRiskVO` onde valores específicos têm significados compartilhados.
+- Constantes como `DAYS_DEFAULT` em `Constants.java`.
+
+**Grau:** Baixo a médio.  
+**Localidade:** Variável, algumas ocorrências entre componentes distantes.
+
+#### 4. Connascência de Valores (CoV)
+
+**Exemplos no projeto:**
+- A classe `Risk` quando calcula e avalia o score de risco.
+- Propriedades como `score.approved` configuradas no `application.yml`.
+
+**Grau:** Médio.  
+**Localidade:** Média, principalmente entre componentes de um mesmo domínio.
+
+#### 5. Connascência de Identidade (CoI)
+
+**Exemplos no projeto:**
+- Relacionamentos JPA entre entidades (por exemplo, `LoanData` e `CustomerData`).
+- Código do empréstimo usado em várias partes do sistema para identificar o mesmo empréstimo.
+
+**Grau:** Médio.  
+**Localidade:** Variável, pode ocorrer entre componentes distantes (especialmente para identificadores).
+
+### Componentes com Alta Connascência
+
+1. **Classe Risk**
+   - Alta connascência de valores (CoV) com várias outras classes.
+   - Alta connascência de significado (CoM) devido às várias regras de negócio.
+   - Isso está alinhado com a métrica LCOM alta que identificamos anteriormente.
+
+2. **RiskAnalysisCoordinatorUseCaseImpl**
+   - Alta connascência de execução (CoE) com os processors de risco.
+   - Connascência de identidade (CoI) com a entidade Risk.
+
+3. **LoanPersistProviderImpl**
+   - Alta connascência de nome (CoN) devido à implementação de múltiplas interfaces.
+   - Connascência de valores (CoV) e identidade (CoI) com outras partes do sistema.
+
+## Análise de Qualidade e Recomendações
+
+### Pontos Fortes
+- **Arquitetura Clean e Bem Definida**: O projeto demonstra uma clara separação de responsabilidades.
+- **Baixa Complexidade Ciclomática**: A maioria das classes apresenta boa complexidade, facilitando testes e manutenção.
+- **Alta Coesão**: A maioria das classes possui alta coesão, demonstrando um bom encapsulamento das responsabilidades.
+- **Proximidade à Sequência Principal**: Os componentes estão geralmente bem equilibrados em termos de abstração e instabilidade.
+
+### Áreas de Melhoria
+
+1. **Refatorar a classe Risk**
+   - Dividir em classes menores com responsabilidades mais específicas.
+   - Pode-se criar uma classe para avaliar o risco de idade, outra para avaliar o risco de comprometimento salarial, etc.
+   - Isso reduziria a connascência de valores (CoV), de significado (CoM) e melhoraria a coesão (LCOM).
+
+2. **Utilizar Padrões de Design**
+   - O uso do padrão Strategy para as diferentes análises de risco pode reduzir a connascência de execução (CoE).
+   - Considerar o uso de um Builder mais elaborado para Risk para reduzir a connascência de posição (CoP).
+
+3. **Revisar Componentes com Distância Moderada da DSP**
+   - Classes como RiskAnalysisCoordinatorUseCaseImpl e LoanListener podem se beneficiar de uma revisão em suas dependências.
+
+4. **Aumentar o Encapsulamento**
+   - Revisar a necessidade de alguns Value Objects (VOs) expostos.
+   - Reduzir a exposição de atributos internos quando possível.
+
+5. **Melhorar a Documentação**
+   - Documentar melhor a connascência de significado (CoM) onde não pode ser evitada.
+   - Usar anotações mais específicas para esclarecer a connascência entre componentes.
+
+## Conclusão
+
+No geral, o projeto apresenta boas métricas de qualidade de código, com apenas algumas áreas específicas que poderiam se beneficiar de refatoração para melhorar a manutenibilidade e testabilidade. A arquitetura limpa e baseada em componentes contribui para manter um bom nível de acoplamento e coesão na maior parte do sistema.
+
+A connascência não é algo a ser completamente eliminado, mas sim gerenciado. Manter alta connascência dentro de um componente e baixa connascência entre componentes é o ideal, e o projeto parece seguir essa diretriz em grande parte de sua estrutura.
