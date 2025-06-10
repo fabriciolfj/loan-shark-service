@@ -241,6 +241,7 @@ Connascência existe quando duas entidades de software são tão interdependente
 
 ## Conclusão
 
-No geral, o projeto apresenta boas métricas de qualidade de código, com apenas algumas áreas específicas que poderiam se beneficiar de refatoração para melhorar a manutenibilidade e testabilidade. A arquitetura limpa e baseada em componentes contribui para manter um bom nível de acoplamento e coesão na maior parte do sistema.
+No geral, o projeto apresenta boas métricas de qualidade de código, com apenas algumas áreas específicas que poderiam se beneficiar de refatoração para melhorar a manutenibilidade e testabilidade. A arquitetura limpa e baseada em componentes 
+contribui para manter um bom nível de acoplamento e coesão na maior parte do sistema.
 
 A connascência não é algo a ser completamente eliminado, mas sim gerenciado. Manter alta connascência dentro de um componente e baixa connascência entre componentes é o ideal, e o projeto parece seguir essa diretriz em grande parte de sua estrutura.
